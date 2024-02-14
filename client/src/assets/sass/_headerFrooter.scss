@@ -1,0 +1,60 @@
+.header {
+  background-color: $theme;
+
+  &-wrp {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    // gap: 10px;
+
+    a {
+      font-size: 34px;
+      color: $white;
+      text-transform: uppercase;
+    }
+  }
+
+  &-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &-menu {
+      display: flex;
+      gap: 10px;
+
+      a {
+        color: $white;
+        font-size: 16px;
+        text-transform: capitalize;
+        transition: 0.4s;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        &:hover {
+          color: $black;
+        }
+      }
+    }
+
+    .start-btn {
+      background-color: $secendary;
+      display: flex;
+      flex-direction: column;
+      width: 50px;
+      height: 50px;
+      border-radius: 2px;
+      align-items: center;
+      justify-content: c;
+      font-size: 18px;
+      text-transform: capitalize;
+      cursor: pointer;
+    }
+  }
+}
