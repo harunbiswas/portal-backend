@@ -5,33 +5,64 @@ import Title from '../components/Title'
 export default function LoginSignup() {
   const [showPass, setShowPass] = useState(false)
   const [isSignUp, setIsSignUp] = useState(false)
+
+  const [data, setData] = useState({
+    name: '',
+    email: '',
+    pass: '',
+  })
+
+  const [error, setError] = useState({
+    name: true,
+  })
+
+  const changeHandler = e => {
+    setData(prev => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      }
+    })
+  }
+
+  const submitHandler = e => {
+    e.preventDefault()
+
+    if (isSignUp) {
+    }
+  }
   return (
     <div className='login-signup'>
-      <form
-        className='form'
-        onSubmit={e => {
-          e.preventDefault()
-        }}
-      >
+      <form className='form' onSubmit={submitHandler}>
         <Title
           title={(isSignUp && 'Signup an accout') || 'Sign in to your account'}
         />
         {isSignUp && (
           <div className='form-wrp'>
-            <div className='form-group'>
-              <label htmlFor='fName'>First Name</label>
-              <input type='text' placeholder='Frist Name' id='fName' />
-            </div>
-            <div className='form-group'>
-              <label htmlFor='lName'>Last Name</label>
-              <input type='text' placeholder='Last Name' id='lName' />
+            <div className={`form-group ${(error.name && 'error') || ''}`}>
+              <label htmlFor='fName'>Company Name</label>
+              <input
+                value={data?.name}
+                type='text'
+                placeholder='Frist Name'
+                id='fName'
+                name='name'
+                onChange={changeHandler}
+              />
             </div>
           </div>
         )}
         <div className='form-wrp'>
           <div className='form-group'>
             <label htmlFor='email'>email</label>
-            <input type='email' placeholder='example#domain.com' id='email' />
+            <input
+              value={data?.email}
+              type='email'
+              placeholder='example@domain.com'
+              id='email'
+              name='email'
+              onChange={changeHandler}
+            />
           </div>
         </div>{' '}
         <div className='form-wrp'>
@@ -39,8 +70,11 @@ export default function LoginSignup() {
             <label htmlFor='password'>password</label>
             <input
               type={!showPass && 'password'}
+              value={data?.pass}
               placeholder='Password'
               id='password'
+              name='pass'
+              onChange={changeHandler}
             />
             <button onClick={() => setShowPass(!showPass)} className='eye-btn'>
               {(showPass && <BsEyeSlashFill />) || <BsEyeFill />}

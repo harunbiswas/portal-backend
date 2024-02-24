@@ -1,6 +1,7 @@
 import axios from 'axios'
 import express from 'express'
 import * as WelcomeController from '../controllers/WelcomeController.js'
+import loginRouter from './loginSignup.js'
 const router = express.Router()
 
 // default route
@@ -33,5 +34,7 @@ router.get('/vihicle', async (req, res) => {
 
 // Define route for "/WelcomeAPI" endpoint
 router.get('/welcome', WelcomeController.Welcome)
+
+router.use('/loginsignup', loginRouter)
 
 export default router
