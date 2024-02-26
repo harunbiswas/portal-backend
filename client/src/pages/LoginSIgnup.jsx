@@ -1,10 +1,15 @@
+import axios from 'axios'
+import Cookies from 'js-cookie'
 import { useState } from 'react'
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
 import Title from '../components/Title'
+import values from '../values'
 
 export default function LoginSignup() {
   const [showPass, setShowPass] = useState(false)
   const [isSignUp, setIsSignUp] = useState(false)
+  const navigate = useNavigate()
 
   const [data, setData] = useState({
     name: '',
@@ -12,11 +17,15 @@ export default function LoginSignup() {
     pass: '',
   })
 
-  const [error, setError] = useState({
-    name: true,
-  })
+  const [error, setError] = useState()
 
   const changeHandler = e => {
+    setError(prev => {
+      return {
+        ...prev,
+        [e.target.name]: false,
+      }
+    })
     setData(prev => {
       return {
         ...prev,
@@ -29,6 +38,27 @@ export default function LoginSignup() {
     e.preventDefault()
 
     if (isSignUp) {
+      axios
+        .post(`${values.base_url}/loginsignup`, data)
+        .then(d => {
+          setIsSignUp(false)
+        })
+        .catch(e => {
+          setError(e.response?.data)
+        })
+    } else {
+      axios
+        .post(`${values.base_url}/loginsignup/login`, data)
+        .then(d => {
+          Cookies.set('login', JSON.stringify(d?.data), {
+            expires: 30,
+            path: '/',
+          })
+          window.location.reload()
+        })
+        .catch(e => {
+          setError(e.response?.data)
+        })
     }
   }
   return (
@@ -39,7 +69,7 @@ export default function LoginSignup() {
         />
         {isSignUp && (
           <div className='form-wrp'>
-            <div className={`form-group ${(error.name && 'error') || ''}`}>
+            <div className={`form-group ${(error?.name && 'error') || ''}`}>
               <label htmlFor='fName'>Company Name</label>
               <input
                 value={data?.name}
@@ -53,7 +83,7 @@ export default function LoginSignup() {
           </div>
         )}
         <div className='form-wrp'>
-          <div className='form-group'>
+          <div className={`form-group ${(error?.email && 'error') || ''}`}>
             <label htmlFor='email'>email</label>
             <input
               value={data?.email}
@@ -66,7 +96,7 @@ export default function LoginSignup() {
           </div>
         </div>{' '}
         <div className='form-wrp'>
-          <div className='form-group'>
+          <div className={`form-group ${(error?.pass && 'error') || ''}`}>
             <label htmlFor='password'>password</label>
             <input
               type={!showPass && 'password'}
@@ -76,7 +106,11 @@ export default function LoginSignup() {
               name='pass'
               onChange={changeHandler}
             />
-            <button onClick={() => setShowPass(!showPass)} className='eye-btn'>
+            <button
+              type='button'
+              onClick={() => setShowPass(!showPass)}
+              className='eye-btn'
+            >
               {(showPass && <BsEyeSlashFill />) || <BsEyeFill />}
             </button>
           </div>

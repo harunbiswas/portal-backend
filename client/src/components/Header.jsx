@@ -1,9 +1,11 @@
+import Cookies from 'js-cookie'
 import { FaUser } from 'react-icons/fa'
 import { GrSupport } from 'react-icons/gr'
-import { IoNotifications } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
+import { IoMdLogOut } from 'react-icons/io'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Header({ setIsForm }) {
+  const navigate = useNavigate()
   return (
     <header className='header' id='header'>
       <div className='container-full'>
@@ -30,9 +32,15 @@ export default function Header({ setIsForm }) {
                 </Link>
               </li>
               <li>
-                <Link to='/'>
-                  <IoNotifications />
-                  <span>Nodifigation</span>
+                <Link
+                  className='logout'
+                  onClick={() => {
+                    Cookies.remove('login')
+                    window.location.reload()
+                  }}
+                >
+                  <IoMdLogOut />
+                  <span>Sign Out</span>
                 </Link>
               </li>
             </ul>

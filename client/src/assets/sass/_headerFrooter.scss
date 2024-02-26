@@ -40,6 +40,12 @@
         &:hover {
           color: $black;
         }
+
+        &.logout {
+          &:hover {
+            color: $red;
+          }
+        }
       }
     }
 
