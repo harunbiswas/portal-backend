@@ -4,19 +4,22 @@ import { IoMdClose } from 'react-icons/io'
 import { MdOutlineKeyboardBackspace } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 
-export default function StartForm({ isForm, setIsForm }) {
+export default function StartForm({ isForm, setIsForm, data, setData }) {
   const [reg, setReg] = useState('')
   const [error, setError] = useState(false)
-  const [data, setData] = useState(null)
+
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
+  const [errMsg, setErrMsg] = useState(false)
 
   const searchHandler = () => {
     if (data) {
       navigate('start')
       setIsForm(false)
-      setData(null)
+      setReg('')
     } else {
       if (reg) {
+        setLoading(true)
         axios
           .get(`http://localhost:4000/api/vihicle?reg=${reg}`, {
             headers: {
@@ -26,16 +29,20 @@ export default function StartForm({ isForm, setIsForm }) {
           })
           .then(d => {
             setData(d.data)
+            setLoading(false)
           })
           .catch(e => {
-            console.log(e)
+            setLoading(false)
             setData(null)
+            setError(true)
+            setErrMsg(true)
           })
       } else {
         setError(true)
       }
     }
   }
+
   return (
     <div className={`start-form-wrp ${(isForm && 'show') || ''}`}>
       <div className='start-form'>
@@ -60,6 +67,7 @@ export default function StartForm({ isForm, setIsForm }) {
                 onChange={e => {
                   setReg(e.target.value)
                   setError(false)
+                  setErrMsg(false)
                 }}
                 type='text'
                 placeholder='Enter a reg'
@@ -67,24 +75,28 @@ export default function StartForm({ isForm, setIsForm }) {
                 id='reg'
                 className={(error && 'error') || ''}
               />
+              {errMsg && <span>Vehicle not found! </span>}
             </div>
-          )) || (
-            <div className='start-form-body-group'>
-              <h2>
-                You search for{' '}
-                {data?.registrationNumber +
-                  ' ' +
-                  data?.motStatus +
-                  ' ' +
-                  data?.make +
-                  ' ' +
-                  data?.fuelType}
-              </h2>
-            </div>
-          )}
+          )) ||
+            (data && (
+              <div className='start-form-body-group'>
+                <h2>
+                  You search for{' '}
+                  {data?.registrationNumber +
+                    ' ' +
+                    data?.motStatus +
+                    ' ' +
+                    data?.make +
+                    ' ' +
+                    data?.fuelType}
+                </h2>
+              </div>
+            ))}
           <div className='start-form-body-group'>
             <button onClick={searchHandler}>
-              {(data && 'Continue') || 'Search for vehicle'}
+              {(data && 'Continue') ||
+                (loading && 'searching...') ||
+                'Search for vehicle'}
             </button>
           </div>
         </div>

@@ -10,7 +10,8 @@ export const EncodeToken = (email, name, role, user_id) => {
 
 export const DecodeToken = token => {
   try {
-    const KEY = process.env.JWT_SECRET
+    const KEY = JWT_SECRET
+
     return jwt.verify(token, KEY)
   } catch (error) {
     return null

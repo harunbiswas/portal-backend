@@ -1,10 +1,13 @@
 import Cookies from 'js-cookie'
+import { useContext } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { GrSupport } from 'react-icons/gr'
 import { IoMdLogOut } from 'react-icons/io'
 import { Link, useNavigate } from 'react-router-dom'
+import StartContext from './context/StartContext'
 
 export default function Header({ setIsForm }) {
+  const { setData } = useContext(StartContext)
   const navigate = useNavigate()
   return (
     <header className='header' id='header'>
@@ -44,7 +47,13 @@ export default function Header({ setIsForm }) {
                 </Link>
               </li>
             </ul>
-            <button onClick={() => setIsForm(true)} className='start-btn'>
+            <button
+              onClick={() => {
+                setIsForm(true)
+                setData(null)
+              }}
+              className='start-btn'
+            >
               <svg
                 width='36'
                 height='34'

@@ -133,7 +133,13 @@
       flex-direction: column;
       gap: 10px;
 
-      input {
+      span {
+        color: $red;
+        font-size: 10px;
+      }
+
+      input,
+      select {
         height: 40px;
         padding: 10px;
 

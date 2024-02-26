@@ -1,6 +1,8 @@
 import axios from 'axios'
 import express from 'express'
 import * as WelcomeController from '../controllers/WelcomeController.js'
+import { addMoveController } from '../controllers/addMoveController.js'
+import Auth from '../middlewares/Auth.js'
 import loginRouter from './loginSignup.js'
 const router = express.Router()
 
@@ -32,8 +34,43 @@ router.get('/vihicle', async (req, res) => {
   }
 })
 
+//get google address
+router.get('/address', async (req, res) => {
+  const { post } = req.query
+  const apiKey = 'AIzaSyAyTa5kSsNidP5kRUs-bDf859CHU3ZtXu0'
+  const apiUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(
+    post
+  )}&key=${apiKey}`
+
+  try {
+    const response = await axios.get(apiUrl)
+    const responseData = response.data
+
+    // Initialize the visited set to handle circular references
+    const visited = new Set()
+
+    // Use JSON.stringify with a replacer function to handle circular references
+    const jsonString = JSON.stringify(responseData, (key, value) => {
+      if (typeof value === 'object' && value !== null) {
+        if (visited.has(value)) {
+          return '[Circular]'
+        }
+        visited.add(value)
+      }
+      return value
+    })
+
+    res.status(200).json(JSON.parse(jsonString))
+  } catch (err) {
+    console.log(err)
+    res.status(400).json(err?.response)
+  }
+})
+
 // Define route for "/WelcomeAPI" endpoint
 router.get('/welcome', WelcomeController.Welcome)
+
+router.post('/start', Auth, addMoveController)
 
 router.use('/loginsignup', loginRouter)
 
