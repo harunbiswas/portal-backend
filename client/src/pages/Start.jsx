@@ -49,7 +49,9 @@ export default function Start() {
           (active === 1 && <DeliveryForm />) ||
           (active === 2 && <TimeScale />) ||
           (active === 3 && <Transport />) ||
-          (active === 4 && <Refarance />) || <Details />}
+          (active === 4 && <Refarance />) || (
+            <Details data={data} isStart={true} />
+          )}
 
         <div className='start-btns'>
           <button

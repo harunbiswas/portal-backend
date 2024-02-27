@@ -78,6 +78,42 @@
       cursor: pointer;
     }
   }
+
+  &-table {
+    width: 100%;
+    overflow-x: auto;
+
+    table {
+      width: 1600px;
+      margin: 30px 0 20px;
+      border-collapse: collapse;
+      border: $border;
+    }
+
+    th,
+    td {
+      border-bottom: $border;
+      text-align: left;
+      a {
+        padding: 20px 10px;
+        display: flex;
+        font-size: 14px;
+      }
+    }
+
+    th {
+      padding: 7px 10px;
+      font-size: 14px;
+    }
+
+    td {
+      cursor: pointer;
+    }
+  }
+
+  &-single {
+    margin: 40px 0;
+  }
 }
 
 // start form

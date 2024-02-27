@@ -13,4 +13,25 @@ const addMoveController = async function (req, res) {
   }
 }
 
-export { addMoveController }
+const getMoves = async function (req, res) {
+  try {
+    const result = await Moves.find()
+    res.status(200).json(result)
+  } catch (err) {
+    res.status(500).json('Internal server errors')
+  }
+}
+
+// get single move
+
+const getMove = async function (req, res) {
+  try {
+    const { id } = req.params
+    const result = await Moves.findOne({ _id: id })
+    res.status(200).json(result)
+  } catch (err) {
+    res.status(500).json('Internal server errors')
+  }
+}
+
+export { addMoveController, getMove, getMoves }

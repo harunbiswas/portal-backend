@@ -1,7 +1,11 @@
 import axios from 'axios'
 import express from 'express'
 import * as WelcomeController from '../controllers/WelcomeController.js'
-import { addMoveController } from '../controllers/addMoveController.js'
+import {
+  addMoveController,
+  getMove,
+  getMoves,
+} from '../controllers/addMoveController.js'
 import Auth from '../middlewares/Auth.js'
 import loginRouter from './loginSignup.js'
 const router = express.Router()
@@ -71,6 +75,12 @@ router.get('/address', async (req, res) => {
 router.get('/welcome', WelcomeController.Welcome)
 
 router.post('/start', Auth, addMoveController)
+
+// get all moves
+router.get('/moves', Auth, getMoves)
+
+// get single move
+router.get('/move/:id', Auth, getMove)
 
 router.use('/loginsignup', loginRouter)
 
