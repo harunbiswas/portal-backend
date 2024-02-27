@@ -28,14 +28,6 @@ app.use(cors())
 app.use(helmet())
 app.use(hpp())
 
-app.use((req, res, next) => {
-  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin')
-  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups')
-  res.setHeader('Content-Security-Policy', 'default-src https:')
-
-  next()
-})
-
 // Body parsing middleware with increased limit
 app.use(express.json({ limit: MAX_JSON_SIZE }))
 app.use(express.urlencoded({ limit: MAX_URL_ENCODED_SIZE }))
