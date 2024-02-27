@@ -48,7 +48,7 @@ export default function SingleMove() {
   return (
     <div className='moves-single'>
       <div className='container'>
-        <Details data={data} login={login} />
+        <Details setData={setData} data={data} login={login} />
         {login?.role === 'admin' && data?.status === 'request' && (
           <div className='moves-single-btns'>
             <button onClick={() => updateMove('cancel')} className='cancel'>

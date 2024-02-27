@@ -7,12 +7,17 @@ import SingleMove from './pages/SingleMove.jsx'
 import Start from './pages/Start.jsx'
 import Error from './pages/error.jsx'
 import HomePage from './pages/home-page.jsx'
+
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   useEffect(() => {
-    setIsAuthenticated(Cookies.get('login'))
-  })
+    // Check if the login cookie exists
+    const loginCookie = Cookies.get('login')
+    setIsAuthenticated(!!loginCookie) // Convert to boolean
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }) // Pass an empty dependency array to run the effect only once
 
   return (
     <BrowserRouter>

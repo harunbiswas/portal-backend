@@ -4,7 +4,7 @@ import { IoCloseSharp } from 'react-icons/io5'
 import { useParams } from 'react-router-dom'
 import values from '../../values'
 
-export default function UploadPdf({ pdf, setPdf, login }) {
+export default function UploadPdf({ pdf, setPdf, login, setData }) {
   const { id } = useParams()
   const [error, setError] = useState(false)
   const [file, setFile] = useState(null)
@@ -21,7 +21,8 @@ export default function UploadPdf({ pdf, setPdf, login }) {
           },
         })
         .then(d => {
-          console.log(d.data)
+          setPdf(false)
+          setData(d?.data)
         })
         .catch(e => {
           console.log(e)

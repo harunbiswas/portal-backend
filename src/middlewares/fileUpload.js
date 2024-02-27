@@ -31,9 +31,10 @@ const pdfUpload = async function (req, res, next) {
             .status(500)
             .json({ error: 'InternalError', message: 'Internal server error' })
         } else {
-          const { path } = req.file
+          const { filename } = req.file
+
           // File uploaded successfully
-          const fileUrl = `${baseUrl}/api/${path}`
+          const fileUrl = `${baseUrl}api/${filename}`
           if (req.body?.identi === 'POD') {
             req.body.status = 'complete'
             req.body.pod = fileUrl

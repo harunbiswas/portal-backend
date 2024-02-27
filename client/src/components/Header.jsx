@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { GrSupport } from 'react-icons/gr'
 import { IoMdLogOut } from 'react-icons/io'
@@ -8,7 +8,12 @@ import StartContext from './context/StartContext'
 
 export default function Header({ setIsForm }) {
   const { setData } = useContext(StartContext)
+  const [login, setLogin] = useState(null)
   const navigate = useNavigate()
+
+  useEffect(() => {
+    setLogin(JSON.parse(Cookies.get('login')))
+  }, [])
   return (
     <header className='header' id='header'>
       <div className='container-full'>
@@ -31,7 +36,7 @@ export default function Header({ setIsForm }) {
               </li>
               <li>
                 <Link to='/'>
-                  <FaUser /> <span>account</span>
+                  <FaUser /> <span>{login?.name}</span>
                 </Link>
               </li>
               <li>
