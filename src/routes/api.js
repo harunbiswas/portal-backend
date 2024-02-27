@@ -8,6 +8,7 @@ import {
   updateMove,
 } from '../controllers/addMoveController.js'
 import Auth from '../middlewares/Auth.js'
+import { pdfUpload } from '../middlewares/fileUpload.js'
 import loginRouter from './loginSignup.js'
 const router = express.Router()
 
@@ -83,7 +84,7 @@ router.get('/moves', Auth, getMoves)
 // get single move
 router.get('/move/:id', Auth, getMove)
 
-router.put('/move/:id', Auth, updateMove)
+router.put('/move/:id', Auth, pdfUpload, updateMove)
 
 router.use('/loginsignup', loginRouter)
 

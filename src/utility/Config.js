@@ -15,6 +15,7 @@ export const MAX_URL_ENCODED_SIZE = '50mb'
 
 export const email = 'admin@gmail.com'
 export const pass = 'admin1234'
+export const baseUrl = 'http://localhost:4000/'
 
 export const REQUEST_LIMIT_TIME = 15 * 60 * 1000 // 15 Min
 export const REQUEST_LIMIT_NUMBER = 3000 // Per 15 Min 3000 Request Allowed

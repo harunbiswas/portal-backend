@@ -2,12 +2,15 @@ import moment from 'moment'
 import { useState } from 'react'
 import { FaCarSide, FaCaretDown } from 'react-icons/fa6'
 import { GoTriangleRight } from 'react-icons/go'
+import UploadPdf from '../moves/UploadPdf'
 
 export default function DetailsBodyCollection({ data, isBody, login }) {
   const [isShow, setIsShow] = useState(false)
+  const [pdf, setPdf] = useState(null)
 
   return (
     <div className='details-body'>
+      {pdf && <UploadPdf login={login} setPdf={setPdf} pdf={pdf} />}
       {isBody && (
         <div className='details-body-top'>
           <div className='details-body-top-left'>
@@ -26,12 +29,34 @@ export default function DetailsBodyCollection({ data, isBody, login }) {
               </strong>
             </h2>
           </div>
-          <div className='details-body-top-right'>
-            <button disabled={(!data?.poc && true) || false} className='btn'>
-              View POC
-            </button>
-            <button disabled={(!data?.pod && true) || false}>View POD</button>
-          </div>
+          {(login?.role === 'admin' && (
+            <div className='details-body-top-right'>
+              <button
+                disabled={(data?.poc && true) || false}
+                onClick={() => {
+                  setPdf('POC')
+                }}
+                className='btn'
+              >
+                Upload POC
+              </button>
+              <button
+                onClick={() => {
+                  setPdf('POD')
+                }}
+                disabled={(data?.pod && true) || false}
+              >
+                Upload POD
+              </button>
+            </div>
+          )) || (
+            <div className='details-body-top-right'>
+              <button disabled={(!data?.poc && true) || false} className='btn'>
+                View POC
+              </button>
+              <button disabled={(!data?.pod && true) || false}>View POD</button>
+            </div>
+          )}
         </div>
       )}
       <div

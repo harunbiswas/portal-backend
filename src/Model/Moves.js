@@ -42,7 +42,7 @@ const moveSchema = new mongoose.Schema({
   typeApproval: String,
   wheelplan: String,
   yearOfManufacture: Number,
-  opc: String,
+  poc: String,
   pod: String,
   status: {
     type: String,

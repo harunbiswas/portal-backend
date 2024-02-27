@@ -9,7 +9,6 @@ export default function SingleMove() {
   const { id } = useParams()
 
   const [login, setLogin] = useState({})
-
   const [data, setData] = useState({})
 
   useEffect(() => {

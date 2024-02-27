@@ -58,6 +58,8 @@ app.use('/api', router)
 // Serve static assets for React front end
 app.use(express.static('client/dist'))
 
+app.use('/api', express.static(path.join(__dirname, 'files')))
+
 // Serve React front end for all routes not handled by the API
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
