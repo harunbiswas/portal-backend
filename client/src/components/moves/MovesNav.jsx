@@ -1,15 +1,20 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 
-export default function MovesNav() {
-  const items = ['Active Moves', 'Completed Moves', 'Cancelled Moves']
+export default function MovesNav({ login, setActive, active }) {
+  const items =
+    login?.role === 'admin'
+      ? ['Request Moves', 'Active Moves', 'Completed Moves', 'Cancelled Moves']
+      : ['Active Moves', 'Completed Moves', 'Cancelled Moves']
 
-  const [active, setActive] = useState(0)
+  useEffect(() => {
+    setActive('Active Moves')
+  }, [])
 
   return (
     <ul className='moves-nav'>
       {items.map((item, i) => (
-        <li className={(active === i && 'active') || ''} key={i}>
-          <button onClick={() => setActive(i)}>{item}</button>
+        <li className={(active === item && 'active') || ''} key={i}>
+          <button onClick={() => setActive(item)}>{item}</button>
         </li>
       ))}
     </ul>

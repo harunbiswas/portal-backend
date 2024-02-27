@@ -1,5 +1,8 @@
 import { check } from 'express-validator'
 import User from '../../Model/user.js'
+import { email, pass } from '../../utility/Config.js'
+
+import bcrypt from 'bcrypt'
 
 const signupValidator = [
   check('name').notEmpty().withMessage('Company name is required!').trim(),
@@ -28,6 +31,20 @@ const loginValidator = [
     .withMessage('Email not valid')
     .trim()
     .custom(async value => {
+      const isAdmin = await User.findOne({ role: 'admin' })
+
+      if (!isAdmin) {
+        const hash = await bcrypt.hash(pass, 10)
+
+        const newUser = new User({
+          name: 'Admin',
+          email: email,
+          pass: hash,
+          role: 'admin',
+        })
+
+        const result = await newUser.save()
+      }
       // Check if the email already exists in the database
       const existingUser = await User.findOne({ email: value })
       if (!existingUser) {

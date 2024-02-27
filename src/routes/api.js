@@ -5,6 +5,7 @@ import {
   addMoveController,
   getMove,
   getMoves,
+  updateMove,
 } from '../controllers/addMoveController.js'
 import Auth from '../middlewares/Auth.js'
 import loginRouter from './loginSignup.js'
@@ -81,6 +82,8 @@ router.get('/moves', Auth, getMoves)
 
 // get single move
 router.get('/move/:id', Auth, getMove)
+
+router.put('/move/:id', Auth, updateMove)
 
 router.use('/loginsignup', loginRouter)
 

@@ -34,4 +34,15 @@ const getMove = async function (req, res) {
   }
 }
 
-export { addMoveController, getMove, getMoves }
+// update move
+const updateMove = async function (req, res) {
+  try {
+    const { id } = req.params
+    const result = await Moves.findByIdAndUpdate(id, req.body, { new: true })
+    res.status(200).json(result)
+  } catch (err) {
+    res.status(500).json('Internal server errors')
+  }
+}
+
+export { addMoveController, getMove, getMoves, updateMove }

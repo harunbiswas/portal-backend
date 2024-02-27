@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import values from '../../values'
 
-export default function MoveTable({ search }) {
+export default function MoveTable({ search, active }) {
   const ths = [
     'Vehicle Indentifier',
     'Vehicle description',
@@ -39,7 +39,10 @@ export default function MoveTable({ search }) {
   }, [])
 
   useEffect(() => {
-    setDataU(data)
+    const filteredArray = data.filter(
+      obj => obj?.status.toLowerCase() === 'active'
+    )
+    setDataU(filteredArray)
   }, [data])
 
   useEffect(() => {
@@ -55,6 +58,75 @@ export default function MoveTable({ search }) {
       setDataU(data)
     }
   }, [search])
+
+  useEffect(() => {
+    if (active === 'Active Moves') {
+      const filteredArray = data.filter(
+        obj => obj?.status.toLowerCase() === 'active'
+      )
+      const filteredArray2 = filteredArray.filter(
+        obj =>
+          typeof obj?.registrationNumber === 'string' &&
+          obj?.registrationNumber.toLowerCase().includes(search.toLowerCase())
+      )
+
+      if (search) {
+        setDataU(filteredArray)
+      } else {
+        setDataU(filteredArray)
+      }
+      setDataU(filteredArray2)
+    } else if (active === 'Completed Moves') {
+      const filteredArray = data.filter(
+        obj => obj?.status.toLowerCase() === 'complete'
+      )
+      const filteredArray2 = filteredArray.filter(
+        obj =>
+          typeof obj?.registrationNumber === 'string' &&
+          obj?.registrationNumber.toLowerCase().includes(search.toLowerCase())
+      )
+
+      if (search) {
+        setDataU(filteredArray)
+      } else {
+        setDataU(filteredArray)
+      }
+      setDataU(filteredArray2)
+    } else if (active === 'Cancelled Moves') {
+      const filteredArray = data.filter(
+        obj => obj?.status.toLowerCase() === 'cancel'
+      )
+      const filteredArray2 = filteredArray.filter(
+        obj =>
+          typeof obj?.registrationNumber === 'string' &&
+          obj?.registrationNumber.toLowerCase().includes(search.toLowerCase())
+      )
+
+      if (search) {
+        setDataU(filteredArray)
+      } else {
+        setDataU(filteredArray)
+      }
+      setDataU(filteredArray2)
+    } else {
+      const filteredArray = data.filter(
+        obj => obj?.status.toLowerCase() === 'request'
+      )
+
+      const filteredArray2 = filteredArray.filter(
+        obj =>
+          typeof obj?.registrationNumber === 'string' &&
+          obj?.registrationNumber.toLowerCase().includes(search.toLowerCase())
+      )
+
+      if (search) {
+        setDataU(filteredArray)
+      } else {
+        setDataU(filteredArray)
+      }
+      setDataU(filteredArray2)
+    }
+  }, [active, search])
 
   return (
     <div className='moves-table'>

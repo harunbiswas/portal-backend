@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { FaCarSide, FaCaretDown } from 'react-icons/fa6'
 import { GoTriangleRight } from 'react-icons/go'
 
-export default function DetailsBodyCollection({ data, isBody }) {
+export default function DetailsBodyCollection({ data, isBody, login }) {
   const [isShow, setIsShow] = useState(false)
 
   return (
