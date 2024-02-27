@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import values from '../../values'
 
-export default function MoveTable() {
+export default function MoveTable({ search }) {
   const ths = [
     'Vehicle Indentifier',
     'Vehicle description',
@@ -41,6 +41,20 @@ export default function MoveTable() {
   useEffect(() => {
     setDataU(data)
   }, [data])
+
+  useEffect(() => {
+    const filteredArray = data.filter(
+      obj =>
+        typeof obj?.registrationNumber === 'string' &&
+        obj?.registrationNumber.toLowerCase().includes(search.toLowerCase())
+    )
+
+    if (search) {
+      setDataU(filteredArray)
+    } else {
+      setDataU(data)
+    }
+  }, [search])
 
   return (
     <div className='moves-table'>
