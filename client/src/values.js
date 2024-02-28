@@ -1,6 +1,6 @@
 const values = {}
 
-values.base_url = 'http://localhost:4000/api'
+values.base_url = 'http://195.35.0.234:4000/api'
 
 values.isValidUKPostcode = postcode => {
   // Define a regular expression for UK postcodes
