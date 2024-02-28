@@ -23,23 +23,6 @@ const __dirname = dirname(__filename)
 
 const app = express()
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS')
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-
-  // Include these additional headers
-  res.header('Access-Control-Expose-Headers', 'Content-Length, X-JSON')
-  res.header('Access-Control-Allow-Credentials', 'true')
-
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200)
-  }
-
-  // Continue to the next middleware
-  next()
-})
-
 // Middleware
 app.use(cors())
 app.use(helmet())
