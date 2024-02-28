@@ -23,7 +23,7 @@
   ],
   "author": "MERN-X",
   "engines": {
-    "node": "20.x"
+    "node": "14.x"
   },
   "license": "ISC",
   "dependencies": {
