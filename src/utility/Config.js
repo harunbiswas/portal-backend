@@ -1,6 +1,7 @@
-// export const MONGODB_CONNECTION = "mongodb+srv://testuser7777:testuser7777@cluster0.7uslu.mongodb.net/MernEcommerce?retryWrites=true&w=majority";
 export const MONGODB_CONNECTION =
-  'mongodb://127.0.0.1:27017/automanagement?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1'
+  'mongodb+srv://testuser7777:testuser7777@cluster0.7uslu.mongodb.net/MernEcommerce?retryWrites=true&w=majority'
+// export const MONGODB_CONNECTION =
+//   'mongodb://127.0.0.1:27017/automanagement?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1'
 
 export const JWT_SECRET = 'sdjflkjsdjfjewrsdfjjhherojuwerfjower123-XYZ-ABC'
 export const JWT_EXPIRATION_TIME = '30d'
