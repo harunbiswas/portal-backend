@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import { MdOutlineKeyboardBackspace } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
+import values from '../../values'
 
 export default function StartForm({ isForm, setIsForm, data, setData }) {
   const [reg, setReg] = useState('')
@@ -21,7 +22,7 @@ export default function StartForm({ isForm, setIsForm, data, setData }) {
       if (reg) {
         setLoading(true)
         axios
-          .get(`http://localhost:4000/api/vihicle?reg=${reg}`, {
+          .get(`${values.base_url}/api/vihicle?reg=${reg}`, {
             headers: {
               'x-api-key': 'LTNvq67BYV17Aq6A4UYzs1nQB6L4hsDeKtUw6Uw5',
               'Access-Control-Allow-Origin': '*',
