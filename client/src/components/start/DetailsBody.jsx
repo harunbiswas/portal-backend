@@ -23,18 +23,18 @@ export default function DetailsBody({ e, data, isBody }) {
         </div>
         <h5>Customer reference and notes</h5>
         <div className='info-wrpd'>
-          <div className='info'>
+          {/* <div className='info'>
             <strong className='left'>Customer reference</strong>
             <span>{data?.customarReference || '-'}</span>
-          </div>{' '}
+          </div>{' '} */}
           <div className='info'>
             <strong className='left'>Delivery notes</strong>
             <span>{data?.deliveryNote || '-'}</span>
           </div>{' '}
-          <div className='info'>
+          {/* <div className='info'>
             <strong className='left'>Special notes</strong>
             <span>{data?.specialNote || '-'}</span>
-          </div>{' '}
+          </div>{' '} */}
         </div>
       </div>
     </div>

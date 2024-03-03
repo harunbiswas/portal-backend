@@ -8,7 +8,6 @@ const HomePage = () => {
   const [isForm, setIsForm] = useState(false)
   const [data, setData] = useState(null)
   const changeHandler = e => {
-    console.log(e)
     setData(prev => {
       return {
         ...prev,

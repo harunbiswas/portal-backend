@@ -17,7 +17,7 @@ export default function MoveTable({ search, active }) {
     'Delivery Date',
     'Delivery Time',
     'Collected Posecode',
-    'Collected Postcode',
+    'Delivery Postcode',
   ]
 
   const [data, setData] = useState([])
@@ -147,7 +147,7 @@ export default function MoveTable({ search, active }) {
               </td>
               <td>
                 {' '}
-                <Link to={d?._id}>{d?.euroStatus}</Link>
+                <Link to={d?._id}>{d?.make}</Link>
               </td>
               <td>
                 {' '}

@@ -8,7 +8,7 @@ export default function Refarance() {
     <div className='start-refarance'>
       <Title title='Transport method' />
       <div className='start-refarance-form'>
-        <div className='form-group-wrp'>
+        {/* <div className='form-group-wrp'>
           <div className='form-group'>
             <label htmlFor=''>Customer reference</label>
             <input
@@ -18,7 +18,7 @@ export default function Refarance() {
               type='text'
             />
           </div>
-        </div>
+        </div> */}
         <div className='form-group-wrp'>
           <div className='form-group'>
             <label htmlFor=''>Delivery notes</label>
@@ -30,7 +30,7 @@ export default function Refarance() {
             ></textarea>
           </div>
         </div>{' '}
-        <div className='form-group-wrp'>
+        {/* <div className='form-group-wrp'>
           <div className='form-group'>
             <label htmlFor=''>Special notes</label>
             <textarea
@@ -40,7 +40,7 @@ export default function Refarance() {
               placeholder='Enter your special notes here'
             ></textarea>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

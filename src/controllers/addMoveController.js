@@ -15,7 +15,14 @@ const addMoveController = async function (req, res) {
 
 const getMoves = async function (req, res) {
   try {
-    const result = await Moves.find()
+    const { user_id, role } = req.user
+    let result
+    if (role === 'admin') {
+      result = await Moves.find()
+    } else {
+      result = await Moves.find({ userId: user_id })
+    }
+
     res.status(200).json(result)
   } catch (err) {
     res.status(500).json('Internal server errors')
