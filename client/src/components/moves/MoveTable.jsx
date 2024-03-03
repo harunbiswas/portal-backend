@@ -8,7 +8,7 @@ import values from '../../values'
 export default function MoveTable({ search, active }) {
   const ths = [
     'Vehicle Indentifier',
-    'Vehicle description',
+    'Vehicle Make',
     'Proof documents',
     'Collected Phone',
     'Delivery Phone',
