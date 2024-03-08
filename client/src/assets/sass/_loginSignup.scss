@@ -1,5 +1,5 @@
 .login-signup {
-  background-image: linear-gradient(to bottom, $secendary, $theme);
+  background-image: linear-gradient(to bottom, #fff, #0000);
   min-height: 100vh;
   position: relative;
   z-index: 1;
@@ -28,7 +28,7 @@
     color: $white;
 
     .title {
-      color: $secendary;
+      color: $theme;
       margin-bottom: 50px;
     }
 
@@ -100,7 +100,7 @@
 
         button {
           font-size: 16px;
-          color: $secendary;
+          color: $theme;
           padding-left: 10px;
           display: inline;
           background-color: transparent;

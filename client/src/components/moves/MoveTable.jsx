@@ -1,6 +1,5 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import moment from 'moment'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import values from '../../values'
@@ -10,12 +9,6 @@ export default function MoveTable({ search, active }) {
     'Vehicle Indentifier',
     'Vehicle Make',
     'Proof documents',
-    'Collected Phone',
-    'Delivery Phone',
-    'Collected Date',
-    'Collected Time',
-    'Delivery Date',
-    'Delivery Time',
     'Collected Posecode',
     'Delivery Postcode',
   ]
@@ -155,30 +148,7 @@ export default function MoveTable({ search, active }) {
                   {d?.poc && 'POC'} {(d?.pod && ', POD') || '-'}
                 </Link>
               </td>
-              <td>
-                {' '}
-                <Link to={d?._id}>{d?.cPhone}</Link>
-              </td>
-              <td>
-                {' '}
-                <Link to={d?._id}>{d?.dPhone}</Link>
-              </td>
-              <td>
-                {' '}
-                <Link to={d?._id}>{moment(d?.cDate).format('YYYY/MM/DD')}</Link>
-              </td>{' '}
-              <td>
-                {' '}
-                <Link to={d?._id}>{moment(d?.dDate).format('YYYY/MM/DD')}</Link>
-              </td>
-              <td>
-                {' '}
-                <Link to={d?._id}>{d?.cTime}</Link>
-              </td>
-              <td>
-                {' '}
-                <Link to={d?._id}>{d?.dTime}</Link>
-              </td>
+
               <td>
                 {' '}
                 <Link to={d?._id}>{d?.cPostCode}</Link>
