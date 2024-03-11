@@ -5,13 +5,7 @@ import { Link } from 'react-router-dom'
 import values from '../../values'
 
 export default function MoveTable({ search, active }) {
-  const ths = [
-    'Vehicle Indentifier',
-    'Vehicle Make',
-    'Proof documents',
-    'Collected Posecode',
-    'Delivery Postcode',
-  ]
+  const ths = ['Vehicle Indentifier', 'Vehicle Make']
 
   const [data, setData] = useState([])
   const [dataU, setDataU] = useState([])
@@ -142,7 +136,7 @@ export default function MoveTable({ search, active }) {
                 {' '}
                 <Link to={d?._id}>{d?.make}</Link>
               </td>
-              <td>
+              {/* <td>
                 {' '}
                 <Link to={d?._id}>
                   {d?.poc && 'POC'} {(d?.pod && ', POD') || '-'}
@@ -156,7 +150,7 @@ export default function MoveTable({ search, active }) {
               <td>
                 {' '}
                 <Link to={d?._id}>{d?.dPostCode}</Link>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody>

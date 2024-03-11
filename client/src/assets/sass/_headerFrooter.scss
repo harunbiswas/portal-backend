@@ -13,9 +13,13 @@
     // gap: 10px;
 
     a {
-      font-size: 28px;
-      color: $white;
+      font-size: 18px;
+      color: $black;
       text-transform: uppercase;
+      display: flex;
+      background-color: $secendary;
+      padding: 15px 20px;
+      border-radius: 4px;
     }
   }
 
