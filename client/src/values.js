@@ -1,6 +1,6 @@
 const values = {}
 
-values.base_url = 'http://backend.automanagement.co.uk/api'
+values.base_url = 'https://backend.automanagement.co.uk/api'
 // values.base_url = 'http://localhost:4000/api'
 
 values.isValidUKPostcode = postcode => {
