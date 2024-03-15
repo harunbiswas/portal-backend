@@ -81,16 +81,7 @@ export default function StartForm({ isForm, setIsForm, data, setData }) {
           )) ||
             (data && (
               <div className='start-form-body-group'>
-                <h2>
-                  You search for{' '}
-                  {data?.registrationNumber +
-                    ' ' +
-                    data?.motStatus +
-                    ' ' +
-                    data?.make +
-                    ' ' +
-                    data?.fuelType}
-                </h2>
+                <h2>{data?.registrationNumber + ' ' + data?.make}</h2>
               </div>
             ))}
           <div className='start-form-body-group'>

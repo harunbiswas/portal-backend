@@ -11,9 +11,9 @@ export default function DetailsBody({ e, data, isBody }) {
           <div className='info'>
             <strong className='left'>Condition of outbound vehicle</strong>
             <span>
-              {(data?.hosValidMot && 'Hos valid MOT') || 'Does not have MOT'}
-              {(data?.Roadworthy && 'and is Roadworthy') ||
-                'and is not roadworthy'}
+              {(data?.hosValidMot && 'Has valid MOT') || 'Does not have MOT'}
+              {(data?.Roadworthy && ' and is Roadworthy') ||
+                ' and is not roadworthy'}
             </span>
           </div>{' '}
           <div className='info'>
@@ -21,7 +21,7 @@ export default function DetailsBody({ e, data, isBody }) {
             <span>{data?.transportMethod}</span>
           </div>{' '}
         </div>
-        <h5>Customer reference and notes</h5>
+        <h5> Notes</h5>
         <div className='info-wrpd'>
           {/* <div className='info'>
             <strong className='left'>Customer reference</strong>

@@ -34,9 +34,16 @@ button {
 .container {
   max-width: 1410px;
   margin: auto;
+  @media screen and (max-width: 768px) {
+    margin: auto 10px;
+  }
 }
 .container-full {
   margin: auto 100px;
+
+  @media screen and (max-width: 768px) {
+    margin: auto 10px;
+  }
 }
 
 .title {

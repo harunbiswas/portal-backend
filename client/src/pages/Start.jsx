@@ -6,7 +6,6 @@ import StartContext from '../components/context/StartContext'
 import DeliveryForm from '../components/start/DeliveryForm'
 import Details from '../components/start/Details'
 import Identifire from '../components/start/Identifire'
-import InfoForm from '../components/start/InfoForm'
 import Refarance from '../components/start/Refarance'
 import TimeScale from '../components/start/TimeScale'
 import Transport from '../components/start/Transport'
@@ -44,14 +43,16 @@ export default function Start() {
   return (
     <main className='start'>
       <div className='container'>
-        <Identifire active={active} num={6} />
-        {(active === 0 && <InfoForm />) ||
-          (active === 1 && <DeliveryForm />) ||
-          (active === 2 && <TimeScale />) ||
-          (active === 3 && <Transport />) ||
-          (active === 4 && <Refarance />) || (
-            <Details data={data} isStart={true} />
-          )}
+        <Identifire active={active} num={5} />
+        {
+          /* {(active === 0 && <InfoForm />) || */
+          (active === 0 && <DeliveryForm />) ||
+            (active === 1 && <TimeScale />) ||
+            (active === 2 && <Transport />) ||
+            (active === 3 && <Refarance />) || (
+              <Details data={data} isStart={true} />
+            )
+        }
 
         <div className='start-btns'>
           <button
@@ -66,7 +67,7 @@ export default function Start() {
           </button>
           <button
             disabled={
-              (active === 1 &&
+              (active === 0 &&
                 (!data?.cName ||
                   !data?.cPhone ||
                   !data?.cEmail ||
@@ -82,7 +83,7 @@ export default function Start() {
                   !data?.dPostCode ||
                   !data?.dCountry) &&
                 true) ||
-              (active === 2 &&
+              (active === 1 &&
                 (!data?.cTime ||
                   !data?.cDate ||
                   !data?.dTime ||
@@ -100,10 +101,9 @@ export default function Start() {
                   data?.revenueWeight &&
                   data?.fuelType
                 ) {
-                  console.log(active)
                   setActive(active + 1)
                 }
-              } else if (active < 5) {
+              } else if (active < 4) {
                 setActive(active + 1)
               } else {
                 submitHandler()
@@ -111,7 +111,7 @@ export default function Start() {
             }}
           >
             {(loading && 'Submiting...') ||
-              (active === 5 && 'Submit') ||
+              (active === 4 && 'Submit') ||
               ' Next'}
           </button>
         </div>

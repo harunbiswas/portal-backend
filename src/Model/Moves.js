@@ -44,6 +44,7 @@ const moveSchema = new mongoose.Schema({
   yearOfManufacture: Number,
   poc: String,
   pod: String,
+  deliveryNote: String,
   status: {
     type: String,
     default: 'request',

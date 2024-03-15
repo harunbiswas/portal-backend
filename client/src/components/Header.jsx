@@ -1,19 +1,24 @@
 import Cookies from 'js-cookie'
-import { useContext, useEffect, useState } from 'react'
-import { FaUser } from 'react-icons/fa'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { FaBars, FaUser } from 'react-icons/fa'
 import { GrSupport } from 'react-icons/gr'
 import { IoMdLogOut } from 'react-icons/io'
 import { Link, useNavigate } from 'react-router-dom'
+
 import StartContext from './context/StartContext'
 
 export default function Header({ setIsForm }) {
   const { setData } = useContext(StartContext)
   const [login, setLogin] = useState(null)
   const navigate = useNavigate()
+  const componentRef = useRef(null)
 
   useEffect(() => {
     setLogin(JSON.parse(Cookies.get('login')))
   }, [])
+
+  const [isToggle, setIsToggle] = useState(false)
+
   return (
     <header className='header' id='header'>
       <div className='container-full'>
@@ -23,19 +28,41 @@ export default function Header({ setIsForm }) {
               src='https://automanagement.co.uk/wp-content/uploads/2022/03/AUTO-MANAGEMENT-2-1.png'
               alt=''
             />
+            <button
+              onClick={() => {
+                setIsToggle(!isToggle)
+              }}
+              className='toggle'
+            >
+              {' '}
+              <FaBars />
+            </button>
             <Link to='/'> moves</Link>
           </div>
           <nav className='header-nav'>
-            <ul className='header-nav-menu'>
+            <ul
+              ref={componentRef}
+              className={`header-nav-menu ${(isToggle && 'show') || ''} '`}
+            >
               <li>
-                <Link to='/'>
+                <Link
+                  onClick={() => {
+                    setIsToggle(false)
+                  }}
+                  to='/'
+                >
                   <GrSupport />
 
                   <span>Support</span>
                 </Link>
               </li>
               <li>
-                <Link to='/'>
+                <Link
+                  onClick={() => {
+                    setIsToggle(false)
+                  }}
+                  to='/'
+                >
                   <FaUser /> <span>{login?.name}</span>
                 </Link>
               </li>

@@ -33,7 +33,7 @@ export default function Transport() {
               checked={data?.hosValidMot}
               type='checkbox'
             />
-            <label htmlFor=''>Hos Valid MOT</label>
+            <label htmlFor=''>Has Valid MOT</label>
           </div>
           <div className='form-group'>
             <input

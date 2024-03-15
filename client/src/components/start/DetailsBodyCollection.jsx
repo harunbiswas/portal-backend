@@ -21,10 +21,10 @@ export default function DetailsBodyCollection({
       {isBody && (
         <div className='details-body-top'>
           <div className='details-body-top-left'>
+            <span onClick={() => setIsShow(!isShow)}>
+              {(!isShow && <GoTriangleRight />) || <FaCaretDown />}
+            </span>
             <h2>
-              <span onClick={() => setIsShow(!isShow)}>
-                {(!isShow && <GoTriangleRight />) || <FaCaretDown />}
-              </span>
               <span
                 className='collapes-title'
                 onClick={() => setIsShow(!isShow)}
@@ -144,10 +144,6 @@ export default function DetailsBodyCollection({
           <div className='info'>
             <strong className='left'>Vehicle weight</strong>
             <span>{data?.revenueWeight}KG</span>
-          </div>
-          <div className='info'>
-            <strong className='left'>Wheelbase</strong>
-            <span>{data?.wheelbase}</span>
           </div>
         </div>
       </div>

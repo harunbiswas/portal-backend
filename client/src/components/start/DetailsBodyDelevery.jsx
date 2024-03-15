@@ -11,10 +11,10 @@ export default function DetailsBodyDelivery({ data, isBody }) {
       {isBody && (
         <div className='details-body-top'>
           <div className='details-body-top-left'>
+            <span onClick={() => setIsShow(!isShow)}>
+              {(!isShow && <GoTriangleRight />) || <FaCaretDown />}
+            </span>
             <h2>
-              <span onClick={() => setIsShow(!isShow)}>
-                {(!isShow && <GoTriangleRight />) || <FaCaretDown />}
-              </span>
               <span
                 className='collapes-title'
                 onClick={() => setIsShow(!isShow)}
@@ -53,7 +53,7 @@ export default function DetailsBodyDelivery({ data, isBody }) {
             <span>{data?.dCountry}</span>
           </div>{' '}
           <div className='info'>
-            <strong className='left'>Earliest collection</strong>
+            <strong className='left'>Latest delivery</strong>
             <span>
               {moment(data?.dDate).format('MMMM Do YYYY')} {data?.dTime}
             </span>
