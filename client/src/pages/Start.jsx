@@ -93,17 +93,7 @@ export default function Start() {
             }
             className='next'
             onClick={() => {
-              if (active === 0) {
-                if (
-                  data?.make &&
-                  data?.euroStatus &&
-                  data?.colour &&
-                  data?.revenueWeight &&
-                  data?.fuelType
-                ) {
-                  setActive(active + 1)
-                }
-              } else if (active < 4) {
+              if (active < 4) {
                 setActive(active + 1)
               } else {
                 submitHandler()
