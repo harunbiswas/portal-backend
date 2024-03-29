@@ -45,9 +45,10 @@ const moveSchema = new mongoose.Schema({
   poc: String,
   pod: String,
   deliveryNote: String,
+  cancelNote: String,
   status: {
     type: String,
-    default: 'request',
+    default: 'active',
   },
   userId: String,
 })

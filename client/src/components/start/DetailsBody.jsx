@@ -31,6 +31,11 @@ export default function DetailsBody({ e, data, isBody }) {
             <strong className='left'>Delivery notes</strong>
             <span>{data?.deliveryNote || '-'}</span>
           </div>{' '}
+          <br />
+          {data?.status==="cancel" &&<div className='info'>
+            <strong className='left'>Cancel notes</strong>
+            <span>{data?.cancelNote || '-'}</span>
+          </div>}
           {/* <div className='info'>
             <strong className='left'>Special notes</strong>
             <span>{data?.specialNote || '-'}</span>

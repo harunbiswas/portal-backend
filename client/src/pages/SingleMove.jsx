@@ -10,6 +10,7 @@ export default function SingleMove() {
 
   const [login, setLogin] = useState({})
   const [data, setData] = useState({})
+  const[cancelNote, setCancelNote] = useState("")
 
   useEffect(() => {
     setLogin(JSON.parse(Cookies.get('login')))
@@ -31,10 +32,11 @@ export default function SingleMove() {
   }, [])
 
   const updateMove = status => {
+    console.log(status)
     axios
       .put(
         `${values.base_url}/move/${id}`,
-        { status },
+        status ,
         {
           headers: {
             token: login?.token,
@@ -49,12 +51,22 @@ export default function SingleMove() {
     <div className='moves-single'>
       <div className='container'>
         <Details setData={setData} data={data} login={login} />
-        {login?.role === 'admin' && data?.status === 'request' && (
+        {login?.role === 'admin' && data?.status === 'active' &&  <div className="moves-single-cancel">
+          <div className="form-group-wrp">
+            <div className="form-group">
+              <label htmlFor="cancel">Cancel note</label>
+              <input value={cancelNote} onChange={e=>{
+                setCancelNote(e.target.value)
+              }} type="text" placeholder='cancel note' />
+            </div>
+          </div>
+        </div>}
+        {login?.role === 'admin' && data?.status === 'active' && (
           <div className='moves-single-btns'>
-            <button onClick={() => updateMove('cancel')} className='cancel'>
+            <button onClick={() => updateMove({status:'cancel', cancelNote})} className='cancel'>
               Cancel
             </button>
-            <button onClick={() => updateMove('active')}>Aprove</button>
+          {data?.status === 'request' &&  <button onClick={() => updateMove({status:'active'})}>Aprove</button>}
           </div>
         )}
       </div>

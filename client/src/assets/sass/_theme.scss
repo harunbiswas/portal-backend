@@ -115,6 +115,13 @@
   &-single {
     margin: 40px 0;
 
+    &-cancel{
+      background-color: $white;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
     &-btns {
       display: flex;
       align-items: center;

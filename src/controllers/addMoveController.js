@@ -43,6 +43,7 @@ const getMove = async function (req, res) {
 
 // update move
 const updateMove = async function (req, res) {
+  console.log(res.body)
   try {
     const { id } = req.params
     const result = await Moves.findByIdAndUpdate(id, req.body, { new: true })

@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 export default function MovesNav({ login, setActive, active }) {
   const items =
     login?.role === 'admin'
-      ? ['Request Moves', 'Active Moves', 'Completed Moves', 'Cancelled Moves']
+      ? [ 'Active Moves', 'Completed Moves', 'Cancelled Moves']
       : ['Active Moves', 'Completed Moves', 'Cancelled Moves']
 
   useEffect(() => {
