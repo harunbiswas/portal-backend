@@ -554,9 +554,13 @@
 .support{
   position: relative;
 
-  .p-drop{
-    color: $black;
+
+  @media screen and (min-width: 501px) {
+    .p-drop{
+      color: $black;
+    }
   }
+ 
 
   &-dropdown{
     position: absolute;
@@ -573,9 +577,20 @@
     opacity: 0;
     transition: .4s;
 
+    @media screen and (max-width: 500px) {
+      display: none;
+      position: static;
+      background-color: transparent;
+      margin-left: 10px;
+    }
+
     &.show{
       visibility: visible;
       opacity: 1;
+
+      @media screen and (max-width: 500px) {
+       display: block;
+      }
     }
     
     a{

@@ -65,8 +65,8 @@ export default function Header({ setIsForm }) {
                 className={isDrop &&'p-drop' || ""}
                   onClick={(e) => {
                     e.preventDefault()
-                    setIsToggle(false)
-                    setIsDrop(true)
+                    // setIsToggle(false)
+                    setIsDrop(!isDrop)
                   }}
                   
                 >
