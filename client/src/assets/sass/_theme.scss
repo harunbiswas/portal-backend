@@ -548,3 +548,41 @@
     }
   }
 }
+
+
+// support
+.support{
+  position: relative;
+
+  .p-drop{
+    color: $black;
+  }
+
+  &-dropdown{
+    position: absolute;
+    left: 0;
+    top: 150%;
+    background-color: $black;
+    padding: 10px;
+    border-radius: 4px;
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    visibility: hidden;
+    opacity: 0;
+    transition: .4s;
+
+    &.show{
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    a{
+      // color: $black;
+      &:hover{
+        color: $theme;
+      }
+    }
+  }
+}

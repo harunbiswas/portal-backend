@@ -41,11 +41,11 @@ export default function Transport() {
                 setData(prev => {
                   return {
                     ...prev,
-                    Roadworthy: e.target.checked,
+                    roadworthy: e.target.checked,
                   }
                 })
               }}
-              checked={data?.Roadworthy}
+              checked={data?.roadworthy}
               type='checkbox'
             />
             <label htmlFor=''>Roadworthy</label>

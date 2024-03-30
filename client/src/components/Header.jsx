@@ -13,12 +13,28 @@ export default function Header({ setIsForm }) {
   const navigate = useNavigate()
   const componentRef = useRef(null)
 
+  const drop= useRef(null)
+
   useEffect(() => {
     setLogin(JSON.parse(Cookies.get('login')))
   }, [])
 
   const [isToggle, setIsToggle] = useState(false)
+  const [isDrop, setIsDrop] = useState(false)
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (drop.current && !drop.current.contains(event.target)) {
+        setIsDrop(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
   return (
     <header className='header' id='header'>
       <div className='container-full'>
@@ -44,16 +60,23 @@ export default function Header({ setIsForm }) {
               ref={componentRef}
               className={`header-nav-menu ${(isToggle && 'show') || ''} '`}
             >
-              <li>
+              <li className='support' ref={drop}>
                 <Link
+                className={isDrop &&'p-drop' || ""}
                   onClick={() => {
                     setIsToggle(false)
+                    setIsDrop(true)
                   }}
                   to='/'
                 >
                   <GrSupport />
 
                   <span>Support</span>
+                  <ul className={`support-dropdown ${isDrop && "show"|| ""}`}>
+                    <li><a href="tel:02072052670">020 7205 2670</a></li>
+                    <li><a href="mailto:contact@automanagement.co.uk">Send Email</a></li>
+
+                  </ul>
                 </Link>
               </li>
               <li>

@@ -12,7 +12,7 @@ export default function DetailsBody({ e, data, isBody }) {
             <strong className='left'>Condition of outbound vehicle</strong>
             <span>
               {(data?.hosValidMot && 'Has valid MOT') || 'Does not have MOT'}
-              {(data?.Roadworthy && ' and is Roadworthy') ||
+              {(data?.roadworthy && ' and is Roadworthy') ||
                 ' and is not roadworthy'}
             </span>
           </div>{' '}

@@ -28,6 +28,7 @@ const moveSchema = new mongoose.Schema({
   euroStatus: String,
   fuelType: String,
   hosValidMot: Boolean,
+  roadworthy: Boolean,
   make: String,
   markedForExport: Boolean,
   monthOfFirstRegistration: String,
@@ -42,6 +43,7 @@ const moveSchema = new mongoose.Schema({
   typeApproval: String,
   wheelplan: String,
   yearOfManufacture: Number,
+
   poc: String,
   pod: String,
   deliveryNote: String,
