@@ -63,21 +63,23 @@ export default function Header({ setIsForm }) {
               <li className='support' ref={drop}>
                 <Link
                 className={isDrop &&'p-drop' || ""}
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault()
                     setIsToggle(false)
                     setIsDrop(true)
                   }}
-                  to='/'
+                  
                 >
                   <GrSupport />
 
                   <span>Support</span>
-                  <ul className={`support-dropdown ${isDrop && "show"|| ""}`}>
+                  
+                </Link>
+                <ul className={`support-dropdown ${isDrop && "show"|| ""}`}>
                     <li><a href="tel:02072052670">020 7205 2670</a></li>
                     <li><a href="mailto:contact@automanagement.co.uk">Send Email</a></li>
 
                   </ul>
-                </Link>
               </li>
               <li>
                 <Link
