@@ -70,14 +70,12 @@ export default function Start() {
               (active === 0 &&
                 (!data?.cName ||
                   !data?.cPhone ||
-                  !data?.cEmail ||
                   !data?.cStreet ||
                   !data?.cTwon ||
                   !data?.cPostCode ||
                   !data?.cCountry ||
                   !data?.dName ||
                   !data?.dPhone ||
-                  !data?.dEmail ||
                   !data?.dStreet ||
                   !data?.dTwon ||
                   !data?.dPostCode ||

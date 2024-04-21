@@ -18,7 +18,7 @@ export default function MoveTable({ search, active }) {
         },
       })
       .then(d => {
-        setData(d.data)
+        setData(d.data.reverse())
       })
       .catch(e => {
         console.log(e.response)

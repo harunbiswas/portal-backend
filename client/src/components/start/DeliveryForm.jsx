@@ -97,10 +97,6 @@ export default function DeliveryForm() {
                 onChange={changeHandler}
                 type='email'
                 placeholder='Email Address'
-                className={
-                  (data.hasOwnProperty('cEmail') && !data?.cEmail && 'error') ||
-                  ''
-                }
               />
             </div>{' '}
           </div>
@@ -308,10 +304,6 @@ export default function DeliveryForm() {
                 onChange={changeHandler}
                 type='email'
                 placeholder='Email Address'
-                className={
-                  (data.hasOwnProperty('dEmail') && !data?.dEmail && 'error') ||
-                  ''
-                }
               />
             </div>{' '}
           </div>
