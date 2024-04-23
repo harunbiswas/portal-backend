@@ -81,10 +81,6 @@ export default function DeliveryForm() {
                 onChange={changeHandler}
                 type='text'
                 placeholder='Number'
-                className={
-                  (data.hasOwnProperty('cPhone') && !data?.cPhone && 'error') ||
-                  ''
-                }
               />
             </div>
           </div>
@@ -288,10 +284,6 @@ export default function DeliveryForm() {
                 onChange={changeHandler}
                 type='text'
                 placeholder='Number'
-                className={
-                  (data.hasOwnProperty('dPhone') && !data?.dPhone && 'error') ||
-                  ''
-                }
               />
             </div>
           </div>

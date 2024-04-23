@@ -69,13 +69,11 @@ export default function Start() {
             disabled={
               (active === 0 &&
                 (!data?.cName ||
-                  !data?.cPhone ||
                   !data?.cStreet ||
                   !data?.cTwon ||
                   !data?.cPostCode ||
                   !data?.cCountry ||
                   !data?.dName ||
-                  !data?.dPhone ||
                   !data?.dStreet ||
                   !data?.dTwon ||
                   !data?.dPostCode ||
